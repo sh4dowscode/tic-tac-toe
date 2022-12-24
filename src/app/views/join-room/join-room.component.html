@@ -1,0 +1,17 @@
+<input [formControl]="roomCode" class="py-2 w-full rounded-sm bg-zinc-900 px-3 outline-0" type="text" placeholder="CODIGO DE SALA"
+    id="room-code" required autocomplete="off">
+<div class="relative flex items-center w-full my-4">
+    <input [formControl]="roomPass" class="py-2 w-full rounded-sm bg-zinc-900 px-3 pr-[35px] outline-0"
+        type="{{ showpass ? 'text' : 'password' }}" placeholder="CONTRASEÑA" id="room-pass" required autocomplete="off">
+    <div class="absolute text-xs cursor-pointer right-[10px] text-white" (click)="showpass = !showpass">
+        <i class="fa-solid fa-eye" *ngIf="!showpass"></i>
+        <i class="fa-solid fa-eye-slash" *ngIf="showpass"></i>
+    </div>
+</div>
+<button (click)="joinToRoom()" [disabled]="!roomPass.valid || !roomCode.valid"
+    class="flex items-center justify-center bg-amber-400 w-full rounded-sm text-sm p-2 mt-4">
+    UNIRSE A LA SALA
+</button>
+<a routerLink="/" class="flex items-center justify-center mt-8 text-zinc-400 text-sm hover:text-amber-400">
+    REGRESAR AL INICIO
+</a>

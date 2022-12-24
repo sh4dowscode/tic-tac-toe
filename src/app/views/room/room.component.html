@@ -1,0 +1,55 @@
+<div class="relative flex-col items-center justify-center w-full h-full">
+    <div [class.show]="room && room.status > 1"
+        class="absolute message w-full flex flex-col items-center justify-center h-full bg-black text-center px-4 py-3 border-2 border-amber-400 z-10">
+        <h2 class="text-2xl text-amber-400">{{ status }}</h2>
+        <p class="text-lg mt-5">¿Quieres jugar de nuevo?</p>
+        <button [disabled]="request" (click)="needAccept ? requestAccepted() : requestNewGame()"
+            class="flex items-center outline-0 border-0 justify-center bg-amber-400 w-full max-w-[200px] rounded-sm text-sm p-2 mt-12 mb-4">
+            {{ request ? 'SOLICITUD ENVIADA' : needAccept ? 'ACEPTAR PETICION' : 'JUGAR DE NUEVO' }}
+        </button>
+        <a routerLink="/" class="flex items-center justify-center text-zinc-400 text-sm hover:text-amber-400">
+            REGRESAR AL INICIO
+        </a>
+    </div>
+
+    <div class="flex flex-col items-center justify-center text-center px-4 py-2 mx-auto">
+        <span class="text-zinc-400 text-xs">CODIGO</span>
+        <span class="text-xl">{{ room ? room.code : 'XXXXXX' }}</span>
+    </div>
+    <div class="flex items-center justify-center gap-12 mt-5 mb-8 text-center">
+        <div>
+            <div class="text-xs mb-2 text-amber-400">{{ room && room.player1 ? 'PLAYER 1' : 'ESPERANDO' }}</div>
+            <div class="text-xl">X</div>
+        </div>
+        <div>
+            <div class="text-xs mb-2 text-amber-400">{{ room && room.player2 ? 'PLAYER 2' : 'ESPERANDO' }}</div>
+            <div class="text-xl">O</div>
+        </div>
+    </div>
+    <div class="grid grid-cols-3 mx-auto gap-2 max-w-[250px] max-md:max-w-[200px]" [class.noplay]="!canplay || room && room.status == 0">
+        <input type="text" class="board-btn" (click)="clickFunc($event)" id="0" readonly>
+        <input type="text" class="board-btn" (click)="clickFunc($event)" id="1" readonly>
+        <input type="text" class="board-btn" (click)="clickFunc($event)" id="2" readonly>
+        <input type="text" class="board-btn" (click)="clickFunc($event)" id="3" readonly>
+        <input type="text" class="board-btn" (click)="clickFunc($event)" id="4" readonly>
+        <input type="text" class="board-btn" (click)="clickFunc($event)" id="5" readonly>
+        <input type="text" class="board-btn" (click)="clickFunc($event)" id="6" readonly>
+        <input type="text" class="board-btn" (click)="clickFunc($event)" id="7" readonly>
+        <input type="text" class="board-btn" (click)="clickFunc($event)" id="8" readonly>
+    </div>
+    <div class="text-center mt-8 mx-auto text-sm">{{ status }}</div>
+    <div class="flex items-center justify-center gap-4 text-center mt-8">
+        <div>
+            <div class="text-xs">PLAYER 1</div>
+            <div class="text-sm mt-1">{{ wins.player1 }}</div>
+        </div>
+        <div>
+            <div class="text-xs">EMPATES</div>
+            <div class="text-sm mt-1">{{ wins.draws }}</div>
+        </div>
+        <div>
+            <div class="text-xs">PLAYER 2</div>
+            <div class="text-sm mt-1">{{ wins.player2 }}</div>
+        </div>
+    </div>
+</div>

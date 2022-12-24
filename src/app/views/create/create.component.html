@@ -1,0 +1,15 @@
+<div class="relative flex items-center w-full mb-4">
+    <input [formControl]="roomPass" class="py-2 w-full rounded-sm bg-zinc-900 px-3 pr-[35px] outline-0"
+        type="{{ showpass ? 'text' : 'password' }}" placeholder="CONTRASEÑA" id="room-pass" required autocomplete="off">
+    <div class="absolute text-xs cursor-pointer text-white right-[10px]" (click)="showpass = !showpass">
+        <i class="fa-solid fa-eye" *ngIf="!showpass"></i>
+        <i class="fa-solid fa-eye-slash" *ngIf="showpass"></i>
+    </div>
+</div>
+<button (click)="newRoom()" [disabled]="!roomPass.valid"
+    class="flex items-center outline-0 border-0 justify-center bg-amber-400 w-full rounded-sm text-sm p-2 mt-4">
+    GENERAR SALA
+</button>
+<a routerLink="/" class="flex items-center justify-center mt-8 text-zinc-400 text-sm hover:text-amber-400">
+    REGRESAR AL INICIO
+</a>

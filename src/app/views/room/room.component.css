@@ -1,0 +1,35 @@
+.board-btn {
+    aspect-ratio : 1 / 1;
+    width:100%;
+    background: none;
+    outline: none;
+    color: #FBBF1A;
+    font-size: 34px;
+    text-align: center;
+    border: solid 1px #FBBF1A;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.board-btn:disabled {
+    cursor: default;
+}
+
+.noplay .board-btn {
+    cursor: default !important;
+    touch-action: none !important;
+}
+
+.noplay {
+    cursor: default !important;
+    touch-action: none !important;
+}
+
+.message {
+    transform: scale(0);
+    transition: 300ms;
+}
+
+.message.show {
+    transform: scale(1);
+}

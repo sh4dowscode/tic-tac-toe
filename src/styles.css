@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+body {
+    background: #000000;
+    color: #FFFFFF;
+}
+
+#main {
+    padding: 20px;
+    border-color: #FFFFFF;
+    border-style: solid;
+    margin: auto;
+}
+
+@media (min-width: 540px) {
+    #main {
+        border-left-width: 1px;
+        border-right-width: 1px;
+    }
+}
